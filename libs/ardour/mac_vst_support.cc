@@ -154,6 +154,7 @@ mac_vst_unload (VSTHandle* fhandle)
 
 	if (fhandle->dll)
 	{
+		dlclose (fhandle->dll); //dlclose keeps its own reference count
 		CFBundleRef* bundleRefPtr = (CFBundleRef*) fhandle->dll;
 		CFBundleCloseBundleResourceMap (*bundleRefPtr, (CFBundleRefNum)fhandle->res_file_id);
 		CFRelease (*bundleRefPtr);
@@ -163,6 +164,7 @@ mac_vst_unload (VSTHandle* fhandle)
 	if (fhandle->name)
 	{
 		free (fhandle->name);
+		fhandle->name = 0;
 	}
 
 	/*Don't need the plugin handle any more*/
@@ -249,20 +251,10 @@ void mac_vst_close (VSTState* mac_vst)
 	the lib JUCE will never restart*/
 
 
-	if (mac_vst->handle->plugincnt)
-	{
+	if (mac_vst_unload (mac_vst->handle)) {
 		return;
 	}
 
-	/*Valid plugin loaded - so we can unload it and 0 the pointer
-	to it.  We can't free the handle here because we don't know what else
-	might need it.  It should be / is freed when the plugin is deleted*/
-
-	if (mac_vst->handle->dll)
-	{
-		dlclose (mac_vst->handle->dll); //dlclose keeps its own reference count
-		mac_vst->handle->dll = 0;
-	}
 	free (mac_vst);
 }
 

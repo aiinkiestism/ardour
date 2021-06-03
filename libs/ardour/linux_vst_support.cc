@@ -267,6 +267,7 @@ vstfx_unload (VSTHandle* fhandle)
 	if (fhandle->name)
 	{
 		free (fhandle->name);
+		fhandle->name = 0;
 	}
 
 	/*Don't need the plugin handle any more*/
@@ -350,19 +351,9 @@ void vstfx_close (VSTState* vstfx)
 	the lib JUCE will never restart*/
 
 
-	if (vstfx->handle->plugincnt)
-	{
+	if (vstfx_unload (vstfx->handle)) {
 		return;
 	}
 
-	/*Valid plugin loaded - so we can unload it and 0 the pointer
-	to it.  We can't free the handle here because we don't know what else
-	might need it.  It should be / is freed when the plugin is deleted*/
-
-	if (vstfx->handle->dll)
-	{
-		dlclose(vstfx->handle->dll); //dlclose keeps its own reference count
-		vstfx->handle->dll = 0;
-	}
 	free(vstfx);
 }
