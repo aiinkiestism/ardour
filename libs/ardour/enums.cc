@@ -305,7 +305,6 @@ setup_enum_writer ()
 	REGISTER (_InputMeterLayout);
 
 	REGISTER_ENUM (Slide);
-	REGISTER_ENUM (Splice);
 	REGISTER_ENUM (Ripple);
 	REGISTER_ENUM (RippleAll);
 	REGISTER_ENUM (Lock);
