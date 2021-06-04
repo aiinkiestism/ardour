@@ -2385,7 +2385,6 @@ private:
 	friend class RegionCutDrag;
 	friend class RegionDrag;
 	friend class RegionMoveDrag;
-	friend class RegionSpliceDrag;
 	friend class RegionRippleDrag;
 	friend class TrimDrag;
 	friend class BBTRulerDrag;
