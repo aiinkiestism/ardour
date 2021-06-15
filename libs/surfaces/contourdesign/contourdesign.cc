@@ -564,7 +564,7 @@ ContourDesignControlProtocol::prev_marker_keep_rolling ()
 	if (pos >= 0) {
 		locate (pos);
 	} else {
-		_session->goto_start ();
+		goto_start ();
 	}
 }
 
