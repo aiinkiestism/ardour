@@ -576,7 +576,7 @@ ContourDesignControlProtocol::next_marker_keep_rolling ()
 	if (pos >= 0) {
 		locate (pos);
 	} else {
-		_session->goto_end();
+		goto_end();
 	}
 }
 
