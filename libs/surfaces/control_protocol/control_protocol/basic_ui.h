@@ -69,7 +69,7 @@ class LIBCONTROLCP_API BasicUI {
 	void jump_by_bars (double bars, LocateTransportDisposition ltd = RollIfAppropriate);
 	void jump_by_beats (double beats, LocateTransportDisposition ltd = RollIfAppropriate);
 
-	samplepos_t transport_sample ();
+	samplepos_t transport_sample () const;
 	void locate (samplepos_t sample, LocateTransportDisposition ltd = RollIfAppropriate);
 	void locate (samplepos_t sample, bool);
 	bool locating ();
