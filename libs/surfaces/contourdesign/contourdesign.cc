@@ -562,7 +562,7 @@ ContourDesignControlProtocol::prev_marker_keep_rolling ()
 	samplepos_t pos = _session->locations()->first_mark_before (_session->transport_sample());
 
 	if (pos >= 0) {
-		_session->request_locate (pos);
+		locate (pos);
 	} else {
 		_session->goto_start ();
 	}
@@ -574,7 +574,7 @@ ContourDesignControlProtocol::next_marker_keep_rolling ()
 	samplepos_t pos = _session->locations()->first_mark_after (_session->transport_sample());
 
 	if (pos >= 0) {
-		_session->request_locate (pos);
+		locate (pos);
 	} else {
 		_session->goto_end();
 	}
