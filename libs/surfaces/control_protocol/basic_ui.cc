@@ -45,11 +45,6 @@ BasicUI::BasicUI (Session& s)
 {
 }
 
-BasicUI::BasicUI ()
-	: _session (0)
-{
-}
-
 BasicUI::~BasicUI ()
 {
 
