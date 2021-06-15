@@ -658,7 +658,7 @@ FaderPort::map_recenable_state ()
 
 	bool onoff;
 
-	switch (_session->record_status()) {
+	switch (record_status()) {
 	case RecordState::Disabled:
 		onoff = false;
 		break;
