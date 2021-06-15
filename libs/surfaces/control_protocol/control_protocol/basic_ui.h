@@ -37,6 +37,7 @@
 
 namespace ARDOUR {
 
+class Route;
 class Session;
 class SessionConfiguration;
 
@@ -170,6 +171,11 @@ class LIBCONTROLCP_API BasicUI {
 
 	const SessionConfiguration& config () const;
 	SessionConfiguration&       config ();
+
+	/* Monitor/Master Out */
+
+	boost::shared_ptr<Stripable> monitor_out () const;
+	boost::shared_ptr<Stripable> master_out () const;
 
   protected:
 	Session* _session;
