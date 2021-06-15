@@ -26,6 +26,7 @@
 #include "pbd/pthread_utils.h"
 #include "pbd/memento_command.h"
 
+#include "ardour/audioengine.h"
 #include "ardour/session.h"
 #include "ardour/location.h"
 #include "ardour/tempo.h"
@@ -785,3 +786,8 @@ BasicUI::goto_nth_marker (int n)
 	}
 }
 
+std::string
+BasicUI::make_port_name_non_relative (const std::string& name) const
+{
+	return _session->engine ().make_port_name_non_relative (name);
+}
