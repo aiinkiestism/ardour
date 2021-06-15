@@ -34,8 +34,6 @@
 
 namespace ARDOUR {
 	class Session;
-	class SessionEvent;
-	class Stripable;
 }
 
 class LIBCONTROLCP_API BasicUI {
@@ -45,9 +43,6 @@ class LIBCONTROLCP_API BasicUI {
 
 	void add_marker (const std::string& = std::string());
 	void remove_marker_at_playhead ();
-
-//	void mark_in();
-//	void mark_out();
 
 	void register_thread (std::string name);
 
