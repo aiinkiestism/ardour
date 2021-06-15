@@ -155,7 +155,7 @@ class LIBCONTROLCP_API BasicUI {
 
   protected:
 	BasicUI ();
-	ARDOUR::Session* session;
+	ARDOUR::Session* _session;
 };
 
 #endif /* __ardour_basic_ui_h__ */
