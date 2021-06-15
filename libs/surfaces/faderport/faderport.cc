@@ -367,11 +367,10 @@ FaderPort::button_handler (MIDI::Parser &, MIDI::EventTwoBytes* tb)
 		if (_current_stripable) {
 			boost::shared_ptr<AutomationControl> gain = _current_stripable->gain_control ();
 			if (gain) {
-				samplepos_t now = _session->engine().sample_time();
 				if (tb->value) {
-					gain->start_touch (now);
+					gain->start_touch (engine_sample_time ());
 				} else {
-					gain->stop_touch (now);
+					gain->stop_touch (engine_sample_time ());
 				}
 			}
 		}
@@ -747,8 +746,7 @@ FaderPort::midi_input_handler (Glib::IOCondition ioc, boost::weak_ptr<ARDOUR::As
 
 		port->clear ();
 		DEBUG_TRACE (DEBUG::FaderPort, string_compose ("data available on %1\n", boost::shared_ptr<MIDI::Port>(port)->name()));
-		samplepos_t now = _session->engine().sample_time();
-		port->parse (now);
+		port->parse (engine_sample_time());
 	}
 
 	return true;
