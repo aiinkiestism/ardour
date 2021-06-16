@@ -50,7 +50,7 @@ ArdourTransport::time () const
 bool
 ArdourTransport::roll () const
 {
-	return basic_ui ().transport_rolling ();
+	return !basic_ui ().transport_stopped_or_stopping ();
 }
 
 void

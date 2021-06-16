@@ -333,7 +333,7 @@ BasicUI::transport_play (bool from_last_start)
 		return;
 	}
 
-	bool rolling = transport_rolling();
+	bool rolling = !transport_stopped_or_stopping();
 
 	if (_session->get_play_loop()) {
 
@@ -437,10 +437,10 @@ BasicUI::get_transport_speed () const
 	return _session->actual_speed ();
 }
 
-double
-BasicUI::transport_rolling () const
+bool
+BasicUI::transport_stopped_or_stopping () const
 {
-	return !_session->transport_stopped_or_stopping ();
+	return _session->transport_stopped_or_stopping ();
 }
 
 bool
@@ -649,7 +649,7 @@ BasicUI::toggle_roll (bool roll_out_of_bounded_mode)
 		}
 	}
 
-	bool rolling = transport_rolling();
+	bool rolling = !transport_stopped_or_stopping();
 
 	if (rolling) {
 
