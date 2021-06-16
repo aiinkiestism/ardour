@@ -991,3 +991,9 @@ BasicUI::TransportStateChange ()
 {
 	return _session->TransportStateChange;
 }
+
+PBD::Signal0<void>&
+BasicUI::UndoHistoryChanged ()
+{
+	return _session->history ().Changed;
+}
