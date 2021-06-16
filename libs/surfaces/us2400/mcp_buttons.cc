@@ -25,7 +25,6 @@
 #include "ardour/profile.h"
 #include "ardour/rc_configuration.h"
 #include "ardour/route.h"
-#include "ardour/session.h"
 
 #include "us2400_control_protocol.h"
 #include "surface.h"
@@ -458,7 +457,7 @@ US2400Protocol::marker_release (Button &)
 
 	samplepos_t where = audible_sample();
 
-	if (transport_stopped_or_stopping() && locations()->mark_at (where, _session->sample_rate() / 100.0)) {
+	if (transport_stopped_or_stopping() && locations()->mark_at (where, sample_rate() / 100.0)) {
 		return off;
 	}
 
