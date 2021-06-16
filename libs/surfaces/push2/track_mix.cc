@@ -574,9 +574,9 @@ TrackMixLayout::strip_vpot_touch (int n, bool touching)
 	boost::shared_ptr<AutomationControl> ac = knobs[n]->controllable();
 	if (ac) {
 		if (touching) {
-			ac->start_touch (session.audible_sample());
+			ac->start_touch (p2.audible_sample());
 		} else {
-			ac->stop_touch (session.audible_sample());
+			ac->stop_touch (p2.audible_sample());
 		}
 	}
 }
@@ -594,7 +594,7 @@ TrackMixLayout::update_meters ()
 void
 TrackMixLayout::update_clocks ()
 {
-	samplepos_t pos = session.audible_sample();
+	samplepos_t pos = p2.audible_sample();
 	bool negative = false;
 
 	if (pos < 0) {

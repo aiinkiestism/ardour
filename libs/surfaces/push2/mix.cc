@@ -439,9 +439,9 @@ MixLayout::strip_vpot_touch (int n, bool touching)
 		boost::shared_ptr<AutomationControl> ac = stripable[n]->gain_control();
 		if (ac) {
 			if (touching) {
-				ac->start_touch (session.audible_sample());
+				ac->start_touch (p2.audible_sample());
 			} else {
-				ac->stop_touch (session.audible_sample());
+				ac->stop_touch (p2.audible_sample());
 			}
 		}
 	}
