@@ -39,6 +39,7 @@
 namespace ARDOUR {
 
 class Amp;
+class CoreSelection;
 class Locations;
 class RouteGroup;
 class Session;
@@ -221,6 +222,10 @@ public:
 
 	const Locations* locations () const;
 	Locations*       locations ();
+
+	/* Selection */
+
+	CoreSelection& selection () const;
 
 	/* Signals */
 

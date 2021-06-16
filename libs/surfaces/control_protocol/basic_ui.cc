@@ -898,6 +898,12 @@ BasicUI::locations ()
 	return _session->locations ();
 }
 
+CoreSelection&
+BasicUI::selection () const
+{
+	return _session->selection ();
+}
+
 /* Signals */
 
 PBD::Signal0<void>&
