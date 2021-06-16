@@ -2579,7 +2579,7 @@ boost::shared_ptr<VCA>
 OSC::get_vca_by_name (std::string vname)
 {
 	StripableList stripables;
-	_session->get_stripables (stripables);
+	get_stripables (stripables);
 	for (StripableList::iterator it = stripables.begin(); it != stripables.end(); ++it) {
 		boost::shared_ptr<Stripable> s = *it;
 		boost::shared_ptr<VCA> v = boost::dynamic_pointer_cast<VCA> (s);
@@ -2637,7 +2637,7 @@ OSC::set_temp_mode (lo_address addr)
 			if (vca) {
 				sur->temp_strips.clear();
 				StripableList stripables;
-				_session->get_stripables (stripables);
+				get_stripables (stripables);
 				for (StripableList::iterator it = stripables.begin(); it != stripables.end(); ++it) {
 					boost::shared_ptr<Stripable> st = *it;
 					if (st->slaved_to (vca)) {
@@ -2656,7 +2656,7 @@ OSC::set_temp_mode (lo_address addr)
 					// this is a bus, but not master, monitor or audition
 					sur->temp_strips.clear();
 					StripableList stripables;
-					_session->get_stripables (stripables, PresentationInfo::AllStripables);
+					get_stripables (stripables, PresentationInfo::AllStripables);
 					for (StripableList::iterator it = stripables.begin(); it != stripables.end(); ++it) {
 						boost::shared_ptr<Stripable> st = *it;
 						boost::shared_ptr<Route> ri = boost::dynamic_pointer_cast<Route> (st);
@@ -4090,7 +4090,7 @@ OSC::_strip_parse (const char *path, const char *sub_path, const char* types, lo
 					lo_message_add_int32 (rmsg, sid);
 				}
 				StripableList stripables;
-				_session->get_stripables (stripables);
+				get_stripables (stripables);
 				for (StripableList::iterator it = stripables.begin(); it != stripables.end(); ++it) {
 					boost::shared_ptr<Stripable> st = *it;
 					boost::shared_ptr<VCA> v = boost::dynamic_pointer_cast<VCA> (st);
@@ -6036,7 +6036,7 @@ OSC::get_sorted_stripables(std::bitset<32> types, bool cue, uint32_t custom, Sor
 	StripableList custom_list;
 
 	// fetch all stripables
-	_session->get_stripables (stripables, PresentationInfo::AllStripables);
+	get_stripables (stripables, PresentationInfo::AllStripables);
 	if (custom) {
 		uint32_t nstps = my_list.size ();
 		// check each custom strip to see if it still exists
