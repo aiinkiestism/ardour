@@ -45,6 +45,7 @@ class RouteGroup;
 class Session;
 class SessionConfiguration;
 class Stripable;
+class VCAManager;
 
 class LIBCONTROLCP_API BasicUI
 {
@@ -219,6 +220,8 @@ public:
 	boost::shared_ptr<Stripable> get_remote_nth_stripable (
 	  PresentationInfo::order_t n,
 	  PresentationInfo::Flag    flag) const;
+
+	VCAManager& vca_manager ();
 
 	/* Clicking */
 
