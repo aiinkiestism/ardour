@@ -38,6 +38,7 @@
 
 namespace ARDOUR {
 
+class Amp;
 class Locations;
 class RouteGroup;
 class Session;
@@ -207,6 +208,10 @@ public:
 
 	boost::shared_ptr<Stripable> monitor_out () const;
 	boost::shared_ptr<Stripable> master_out () const;
+
+	/* Clicking */
+
+	boost::shared_ptr<Amp> click_gain();
 
 	/* Locations */
 
