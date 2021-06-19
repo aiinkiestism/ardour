@@ -50,8 +50,6 @@ class Push2Canvas : public ArdourCanvas::Canvas
 	void request_redraw (ArdourCanvas::Rect const &);
 	bool vblank ();
 
-	Cairo::RefPtr<Cairo::Context> image_context() { return _context; }
-
 	int rows() const { return _rows; }
 	int cols() const { return _cols; }
 
